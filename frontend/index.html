@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarePlus Hospital Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <h2 class="logo">✚ CarePlus</h2>
+        <p class="menu-label">MAIN MENU</p>
+
+        <button class="nav-btn active" data-page="dashboard">▦ Dashboard</button>
+        <button class="nav-btn" data-page="register">＋ Register Patient</button>
+        <button class="nav-btn" data-page="patients">♙ Patient Records</button>
+    </aside>
+
+    <main class="main">
+        <header class="topbar">
+            <div>
+                <p class="eyebrow">HOSPITAL MANAGEMENT SYSTEM</p>
+                <h1 id="page-title">Dashboard</h1>
+            </div>
+            <span class="admin">● Administrator</span>
+        </header>
+
+        <section id="dashboard" class="page">
+            <div class="welcome">
+                <p class="eyebrow">WELCOME TO CAREPLUS</p>
+                <h2>Better care starts here.</h2>
+                <p>Manage patient records and appointments in one place.</p>
+                <button class="primary-btn" data-go="register">+ Register Patient</button>
+            </div>
+
+            <div class="stats">
+                <div class="stat-card">
+                    <p>Total Patients</p>
+                    <h2 id="patient-count">0</h2>
+                </div>
+                <div class="stat-card">
+                    <p>Appointments</p>
+                    <h2 id="appointment-count">0</h2>
+                </div>
+            </div>
+
+            <div class="panel">
+                <h3>Welcome to CarePlus</h3>
+                <p>Register patients and manage their appointment details from the menu.</p>
+                <p class="notice">Frontend preview: records are not connected to the Java database yet.</p>
+            </div>
+        </section>
+
+        <section id="register" class="page hidden">
+            <div class="panel">
+                <h2>Register New Patient</h2>
+                <p class="muted">Enter the patient and appointment details.</p>
+
+                <form id="patient-form">
+                    <div class="form-grid">
+                        <label>Patient Name
+                            <input id="name" type="text" placeholder="Full name" required>
+                        </label>
+
+                        <label>Age
+                            <input id="age" type="number" min="0" max="130" placeholder="Age" required>
+                        </label>
+
+                        <label>Phone Number
+                            <input id="phone" type="tel" pattern="[0-9]{10}"
+                                   placeholder="10-digit number" required>
+                        </label>
+
+                        <label>Appointment Date
+                            <input id="date" type="date" required>
+                        </label>
+
+                        <label>Appointment Time
+                            <input id="time" type="time" required>
+                        </label>
+                    </div>
+
+                    <p id="form-message" class="notice">
+                        This is a frontend preview. Saving to the database will be connected later.
+                    </p>
+
+                    <button type="submit" class="primary-btn">Register Patient</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="patients" class="page hidden">
+            <div class="panel">
+                <div class="records-header">
+                    <div>
+                        <h2>Patient Records</h2>
+                        <p class="muted">Search and manage registered patients.</p>
+                    </div>
+                    <button class="primary-btn" data-go="register">+ Add Patient</button>
+                </div>
+
+                <input id="search" class="search-input"
+                       type="search" placeholder="Search by patient name or ID...">
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Age</th>
+                                <th>Phone</th>
+                                <th>Appointment</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="patient-list">
+                            <tr>
+                                <td colspan="6" class="empty">
+                                    No preview records yet. Database connection comes next.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p id="records-message" class="muted records-message"></p>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
